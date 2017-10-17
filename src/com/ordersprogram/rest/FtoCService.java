@@ -1,6 +1,7 @@
 package com.ordersprogram.rest;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -40,4 +41,14 @@ public class FtoCService {
 		String result = "@Produces(\"application/json\") Output: \n\nF to C Converter Output: \n\n" + jsonObject;
 		return Response.status(200).entity(result).build();
 	  }
+	  
+	  @Path("/post")
+	  @POST
+	  @Produces("application/json")
+	  public Response postDataToDatabase()throws JSONException{
+		  
+		  System.out.println("I posted!!! What could be better than this");
+		  return Response.status(200).build();
+	  }
+	  
 }

@@ -35,6 +35,8 @@ public class DbAccess {
             writeResultSet(resultSet);
 
             // PreparedStatements can use variables and are more efficient
+            // The '?' will be filled in with preparedStatement.setString methods
+            // the value of 'default' is the id column in the database table
             preparedStatement = connect
                     .prepareStatement("insert into  feedback.comments values (default, ?, ?, ?, ? , ?, ?)");
             
