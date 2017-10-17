@@ -10,13 +10,13 @@ public class CtoFService {
 	@GET
 	@Produces("application/xml")
 	public String convertCtoF() {
-		System.out.println("We made it 1");
+		
+		
 		DbAccess dao = new DbAccess();
 		
         try {
-        	System.out.println("We made it 2");
 			dao.readDataBase();
-			System.out.println("We made it 3");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

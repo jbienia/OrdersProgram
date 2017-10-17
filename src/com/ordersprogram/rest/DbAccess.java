@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DbAccess {
@@ -36,13 +37,25 @@ public class DbAccess {
             // PreparedStatements can use variables and are more efficient
             preparedStatement = connect
                     .prepareStatement("insert into  feedback.comments values (default, ?, ?, ?, ? , ?, ?)");
+            
+            // Calendar used to set the date for the prepared statement
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, 2015);
+            calendar.set(Calendar.MONTH, 4);
+            calendar.set(Calendar.DATE, 28);
+            
+            Date date = calendar.getTime();
+            
+            // Converted to long to be used in the prepared statement
+            long milliseconds = date.getTime();
            
             // "myuser, webpage, datum, summary, COMMENTS from feedback.comments");
             // Parameters start with 1
             preparedStatement.setString(1, "Test");
             preparedStatement.setString(2, "TestEmail");
             preparedStatement.setString(3, "TestWebpage");
-            preparedStatement.setDate(4, new java.sql.Date(2009, 12, 11));
+            preparedStatement.setDate(4, new java.sql.Date(milliseconds));
+            System.out.println(new java.sql.Date(milliseconds).toString() + "Does this date make sense")  ;
             preparedStatement.setString(5, "TestSummary");
             preparedStatement.setString(6, "TestComment");
             preparedStatement.executeUpdate();
