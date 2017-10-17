@@ -1,5 +1,6 @@
 package com.ordersprogram.rest;
 
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -45,9 +46,9 @@ public class FtoCService {
 	  @Path("/post")
 	  @POST
 	  @Produces("application/json")
-	  public Response postDataToDatabase()throws JSONException{
+	  public Response postDataToDatabase(@FormParam("Name") String name)throws JSONException{
 		  
-		  System.out.println("I posted!!! What could be better than this");
+		  System.out.println("I posted!!! What could be better than this " + name);
 		  return Response.status(200).build();
 	  }
 	  
